@@ -14,7 +14,7 @@ class TestBugzilla(unittest.TestCase):
     def test_bug_id(self):
         zilla = MyBugzilla('tarek@mozilla.com', server='http://example.com')
         link = zilla.bug_link(23)
-        self.assertEqual(list, 'http://example.com/show_bug.cgi?id=23')
+        self.assertEqual(link, 'http://example.com/show_bug.cgi?id=23')
 
     @requests_mock.mock()
     def test_get_new_bugs(self, mocker):
@@ -29,7 +29,7 @@ class TestBugzilla(unittest.TestCase):
 
         zilla = MyBugzilla('tarek@mozilla.com', server='http://example.com')
 
-        bugbugs = list(zilla.get_new_bugs())
+        bugs = list(zilla.get_new_bugs())
         self.assertEqual(bugs[0]['link'],
                          'http://example.com/show_bug.cgi?id=1184528')
 

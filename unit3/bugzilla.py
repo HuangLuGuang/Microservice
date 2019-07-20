@@ -5,7 +5,6 @@
 # @email: luguang.huang@mabotech.com
 import requests
 
-
 class MyBugzilla:
     def __init__(self, account, server = 'https://bugzilla.mozilla.org'):
         self.account = account
@@ -13,7 +12,7 @@ class MyBugzilla:
         self.session = requests.Session()
 
     def bug_link(self, bug_id):
-        return '%s/show_bug/cgi?id=%s' % (self.server, bug_id)
+        return '%s/show_bug.cgi?id=%s' % (self.server, bug_id)
 
     def get_new_bugs(self):
         call = self.server + '/rest/bug'
@@ -28,9 +27,13 @@ class MyBugzilla:
             res = {'bugs': []}
 
         def _add_link(bug):
-            bug['link'] = self.bug_link(bug)
+            bug['link'] = self.bug_link(bug['id'])
             return bug
 
         for bug in res['bugs']:
             yield _add_link(bug)
 
+if __name__ == '__main__':
+    zilla = MyBugzilla('tarek@mozilla.com', server='http://example.com')
+    bugs = list(zilla.get_new_bugs())
+    print(bugs)
