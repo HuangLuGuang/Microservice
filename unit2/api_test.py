@@ -5,6 +5,7 @@
 # @email: luguang.huang@mabotech.com
 from flask import Flask, jsonify, request
 
+
 app = Flask(__name__)
 
 @app.route('/api')
