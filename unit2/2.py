@@ -3,7 +3,7 @@
 # @author  : Huanglg
 # @fileName: 2.py
 # @email: luguang.huang@mabotech.com
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, Response
 from werkzeug.routing import BaseConverter, ValidationError
 
 _USERS = {"1": "Tarek", '2': 'Freya'}

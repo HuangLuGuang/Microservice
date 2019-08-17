@@ -19,7 +19,7 @@ def setup_connector(app, name='default', **options):
     hearders = options.get('hearders', {})
 
     if 'Content-Type' not in hearders:
-        hearders['Content-Type'] = 'application/json'
+        hearders['Content-Type'] = 'appli cation/json'
     session.headers.update(hearders)
 
     app.extensions['connectors'][name] = session
